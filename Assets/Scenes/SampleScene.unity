@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab002077d9e3c846808acceac0fec0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathLineChecker
-  gameOverDelay: 0.8
+  gameOverDelay: 3
 --- !u!61 &1110493734
 BoxCollider2D:
   m_ObjectHideFlags: 0
