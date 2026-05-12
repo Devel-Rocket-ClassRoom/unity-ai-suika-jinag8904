@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DeathLineChecker : MonoBehaviour
 {
-    [SerializeField] float gameOverDelay = 0.8f;
+    [SerializeField] float gameOverDelay = 3.0f;
 
     // instanceID → 데스존 체류 누적 시간
     readonly Dictionary<int, float> fruitTimers = new();
