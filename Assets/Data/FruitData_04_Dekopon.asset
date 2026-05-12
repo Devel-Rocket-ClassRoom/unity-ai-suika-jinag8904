@@ -17,4 +17,4 @@ MonoBehaviour:
   mergeScore: 10
   radiusMultiplier: 2.2
   nextTier: {fileID: 11400000, guid: 218314f245b2e244c819bc38ff60e5b4, type: 2}
-  prefab: {fileID: 0}
+  prefab: {fileID: 3886997728736763465, guid: e1224bfaed6df794c86e525cc30bb640, type: 3}
