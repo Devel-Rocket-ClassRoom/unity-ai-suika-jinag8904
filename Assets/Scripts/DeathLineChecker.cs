@@ -5,37 +5,57 @@ public class DeathLineChecker : MonoBehaviour
 {
     [SerializeField] float gameOverDelay = 3.0f;
 
-    // instanceID → 데스존 체류 누적 시간
     readonly Dictionary<int, float> fruitTimers = new();
+    readonly HashSet<int> currentFrameIDs = new();
+    readonly List<int> staleIDs = new();
+    BoxCollider2D zoneCollider;
     bool triggered;
 
-    void OnTriggerStay2D(Collider2D other)
+    void Awake()
+    {
+        zoneCollider = GetComponent<BoxCollider2D>();
+    }
+
+    void Update()
     {
         if (triggered)
             return;
 
-        if (!other.TryGetComponent<FruitMerge>(out _))
-            return;
+        currentFrameIDs.Clear();
 
-        // 낙하 중(Kinematic) 과일은 카운트 제외
-        var rb = other.GetComponent<Rigidbody2D>();
-        if (rb == null || rb.bodyType != RigidbodyType2D.Dynamic)
-            return;
+        Vector2 center = (Vector2)transform.position + zoneCollider.offset;
+        var cols = Physics2D.OverlapBoxAll(center, zoneCollider.size, 0f);
 
-        int id = other.gameObject.GetInstanceID();
-        fruitTimers.TryGetValue(id, out float elapsed);
-        elapsed += Time.deltaTime;
-        fruitTimers[id] = elapsed;
-
-        if (elapsed >= gameOverDelay)
+        foreach (var col in cols)
         {
-            triggered = true;
-            GameManager.Instance.TriggerGameOver();
-        }
-    }
+            if (!col.TryGetComponent<FruitMerge>(out _))
+                continue;
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        fruitTimers.Remove(other.gameObject.GetInstanceID());
+            var rb = col.attachedRigidbody;
+            if (rb == null || rb.bodyType != RigidbodyType2D.Dynamic)
+                continue;
+
+            int id = col.gameObject.GetInstanceID();
+            currentFrameIDs.Add(id);
+
+            fruitTimers.TryGetValue(id, out float elapsed);
+            elapsed += Time.deltaTime;
+            fruitTimers[id] = elapsed;
+
+            if (elapsed >= gameOverDelay)
+            {
+                triggered = true;
+                GameManager.Instance.TriggerGameOver();
+                return;
+            }
+        }
+
+        // 데스존을 떠난 과일 정리
+        staleIDs.Clear();
+        foreach (var kvp in fruitTimers)
+            if (!currentFrameIDs.Contains(kvp.Key))
+                staleIDs.Add(kvp.Key);
+        foreach (var id in staleIDs)
+            fruitTimers.Remove(id);
     }
 }
