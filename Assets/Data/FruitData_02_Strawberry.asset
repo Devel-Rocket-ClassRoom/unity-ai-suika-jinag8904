@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c035da9bc5e4d4a469d2b4f76918208f, type: 3}
+  m_Name: FruitData_02_Strawberry
+  m_EditorClassIdentifier: Assembly-CSharp::FruitData
+  tier: 2
+  fruitName: Strawberry
+  mergeScore: 3
+  radiusMultiplier: 1.3
+  nextTier: {fileID: 11400000, guid: c3e96b7469ecaeb45b0673cfd0a96df0, type: 2}
+  prefab: {fileID: 0}
