@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4595972932012233761}
   - component: {fileID: 4415379916592225018}
   - component: {fileID: 720911786446764878}
+  - component: {fileID: 4982950360019439105}
   m_Layer: 0
   m_Name: Dekopon
   m_TagString: Untagged
@@ -156,3 +157,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &4982950360019439105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886997728736763465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41bed6048b6eed4b8f90a8f852578e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FruitMerge
+  fruitData: {fileID: 11400000, guid: a7f461c1196f3d84fb76d4beab9b0e15, type: 2}
+  isMerging: 0

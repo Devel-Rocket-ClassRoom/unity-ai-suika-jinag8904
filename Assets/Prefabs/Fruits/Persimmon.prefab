@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1830428184588767371}
   - component: {fileID: 6015471502001626720}
   - component: {fileID: 2262873997239787014}
+  - component: {fileID: 4437733633092975492}
   m_Layer: 0
   m_Name: Persimmon
   m_TagString: Untagged
@@ -156,3 +157,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &4437733633092975492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253268992254478332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41bed6048b6eed4b8f90a8f852578e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FruitMerge
+  fruitData: {fileID: 11400000, guid: 218314f245b2e244c819bc38ff60e5b4, type: 2}
+  isMerging: 0
