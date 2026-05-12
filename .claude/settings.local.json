@@ -1,6 +1,14 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(gh issue *)",
+      "mcp__unity-mcp__Unity_SceneView_Capture2DScene",
+      "mcp__unity-mcp__Unity_RunCommand",
+      "mcp__unity-mcp__Unity_GetConsoleLogs"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "unity-mcp"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
