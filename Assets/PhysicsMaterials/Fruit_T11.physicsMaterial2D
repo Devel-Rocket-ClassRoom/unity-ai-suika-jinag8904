@@ -9,6 +9,6 @@ PhysicsMaterial2D:
   m_Name: Fruit_T11
   serializedVersion: 2
   friction: 0.4
-  bounciness: 0.02
+  bounciness: 0.01
   m_FrictionCombine: 1
   m_BounceCombine: 4

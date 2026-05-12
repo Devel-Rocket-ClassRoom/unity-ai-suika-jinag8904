@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class FruitSpawner : MonoBehaviour
 {
     [SerializeField] FruitData[] spawnableFruits;
-    [SerializeField] Transform nextPreviewPoint;
+    [SerializeField] UnityEngine.UI.Image nextPreviewImage;
     [SerializeField] float spawnY = 4.5f;
     [SerializeField] float containerMinX = -4.0f;
     [SerializeField] float containerMaxX = 4.0f;
@@ -14,7 +14,6 @@ public class FruitSpawner : MonoBehaviour
     FruitData currentFruitData;
     FruitData nextFruitData;
     GameObject currentFruitGO;
-    GameObject nextPreviewGO;
     bool isDropping;
     Camera mainCamera;
 
@@ -58,19 +57,16 @@ public class FruitSpawner : MonoBehaviour
 
     void RefreshPreview()
     {
-        if (nextPreviewGO != null)
-            Destroy(nextPreviewGO);
-
-        if (nextPreviewPoint == null || nextFruitData.prefab == null)
+        if (nextPreviewImage == null || nextFruitData == null || nextFruitData.prefab == null)
             return;
 
-        nextPreviewGO = Instantiate(nextFruitData.prefab, nextPreviewPoint.position, Quaternion.identity);
-        var rb = nextPreviewGO.GetComponent<Rigidbody2D>();
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        rb.gravityScale = 0f;
-        var col = nextPreviewGO.GetComponent<Collider2D>();
-        if (col != null)
-            col.enabled = false;
+        var sr = nextFruitData.prefab.GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+        {
+            nextPreviewImage.sprite = sr.sprite;
+            nextPreviewImage.color = sr.color;
+            nextPreviewImage.enabled = true;
+        }
     }
 
     void DropFruit()
